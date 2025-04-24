@@ -53,6 +53,12 @@ A user study was carried out with this version of the tool and the following are
 
 ## Other areas of improvement 
 
+**MOVE TO RESPONSES API**
+
+ChatGPT has recently moved to the Responses API as it's main service for interacting with it's models. Currently the tool uses the ChatGPT Chat API as this was the only available API tool when the project was started. For future-proofing the tool I would recommend moving to the Responses API for future development. You can see the difference between the two API's here: https://platform.openai.com/docs/guides/responses-vs-chat-completions
+
+This API also allows for conversations as opposed to just a single prompt and response from the ChatAPI. You could expand the existing tool with a text box users can type questions into (e.g. "Please clarify XYZ on analysis 1") and then the model would be able to provide further details.
+
 **ADDING NEW MODELS** 
 
 Open AI Frequently release new and updated models. To add these, go to line **537** and add the model names to the list, i.e. 'o4'. To find out the model names required, you can use the name under the 'Model' section of the table from OpenAI here: https://platform.openai.com/docs/pricing
