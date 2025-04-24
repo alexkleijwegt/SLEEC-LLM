@@ -35,11 +35,11 @@ def load_prompt_supplements():
     agent_spec_files = []
     for f in os.listdir(base_dir):
         full_path = os.path.join(base_dir, f)
-        if os.path.isfile(full_path) and f != "SLEEC Spec.pdf":
+        if os.path.isfile(full_path) and f != "SLEEC Spec.pdf": # All files other than the SLEEC Spec are assumed to be agent specs
             agent_spec_files.append(full_path)
     return sleec_spec_list, agent_spec_files
 
-def read_pdf(file_path):
+def read_pdf(file_path): #Uses PyPDF2 to read PDF's into text for the prompt.
     try:
         with open(file_path, "rb") as f:
             reader = PyPDF2.PdfReader(f)
@@ -52,7 +52,7 @@ def read_pdf(file_path):
     except Exception as e:
         return "Error reading PDF file: " + str(e)
 
-def update_dropdowns():
+def update_dropdowns(): # Populates dropdown boxes with all relevant file options.
     global sleec_files, assertions_files, verification_files, system_files
     sleec_files, assertions_files, verification_files, system_files = load_files()
     sleec_selector["values"] = [os.path.basename(f) for f in sleec_files]
@@ -77,7 +77,7 @@ def update_dropdowns():
         read_system_file()
     update_prompt_supplements_section()
 
-def update_prompt_supplements_section():
+def update_prompt_supplements_section(): #Updates the prompt supplements dropdowns
     global prompt_sleec_files, prompt_agent_files
     global prompt_sleec_selector, prompt_sleec_entry, prompt_agent_selector, prompt_agent_entry
     prompt_sleec_files, prompt_agent_files = load_prompt_supplements()
@@ -219,12 +219,12 @@ def build_prompt():
             except Exception as e:
                 assertions_output = "Error running refines: " + str(e)
         
-        # Get Agent Specification text from PDF
+        # Get agent Specification text from PDF
         agent_text = ""
         if prompt_agent_files:
             agent_text = read_pdf(prompt_agent_files[0])
         
-        # Build the final prompt using the provided template.
+        # Build the final prompt using the provided template. f-strings have been added for this nicer formatting with this template but are not strictly necessary.
         final_prompt = (
     f"Sleec-TK is a toolkit for the specification, validation and verification of social, legal, ethical, empathetic and cultural requirements for autonomous agents and AI systems. "
     f"You can see a full breakdown of the SLEEC application in the attached Sleec document: {sleec_spec_text}.\n\n"
@@ -420,7 +420,7 @@ def build_prompt():
         
         status_var.set("Forwarding Prompt to LLM ...")
         try:
-            client = OpenAI(api_key="REPLACE THIS TEXT WITH YOUR OPENAI API KEY")
+            client = OpenAI(api_key="----------------------------REPLACE THIS TEXT WITH YOUR OPENAI API KEY-------------------------------")
             completion = client.chat.completions.create(
                 model=gpt_model_selector.get(),
                 messages=[{"role": "user", "content": final_prompt}]
@@ -434,7 +434,7 @@ def build_prompt():
     
     else:
         placeholder = (
-            "Placeholder: Analysis for Model-Rule conflicts and/or combined conflicts will be implemented later."
+            "Placeholder: Model-Rule anaylsis hasn't been implemented yet. If you wish to add this, the framework has already been implemented with the system model and verifiction assertions files."
         )
         llm_response_textbox.delete("1.0", "end")
         llm_response_textbox.insert("end", placeholder)
