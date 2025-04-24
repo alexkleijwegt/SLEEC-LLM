@@ -56,3 +56,6 @@ The current prompt has been added to this repository to be read and modified. Th
 
 Currently the tool only supports Rule-Rule errors, however the framework for Model-Rule errors has also been added. This will require the creation of a completely new prompt and can be implemented on line **435**. Currently there is just some placeholder text here which is shown when tying to run any Model-Rule analysis.
 
+**ADDING NEW AGENT SPECIFICATIONS**
+
+New agent specifications should be added as PDF's to the 'LLM Resources' Folder. Currently only ALMI and ASPEN have Specs written, however specifications for more autonomous agents are available at https://www.cs.toronto.edu/~sleec/index.html
