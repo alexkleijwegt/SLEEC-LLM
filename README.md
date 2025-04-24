@@ -12,6 +12,7 @@ This repository contains a python-based extension for the SLEEC-TK toolkit, prov
 
 ## Requirements
 
+- Windows or Linux operating systems (currently no MAC support)
 - SLEEC-TK (available from https://github.com/ScienceofComputerProgramming/SCICO-D-23-00378) and it's dependencies (Java 11 & FDR4)
 - Python 3.9+
 - OpenAI API Key*
@@ -57,7 +58,7 @@ A user study was carried out with this version of the tool and the following are
 
 ChatGPT has recently moved to the Responses API as it's main service for interacting with it's models. Currently the tool uses the ChatGPT Chat API as this was the only available API tool when the project was started. For future-proofing the tool I would recommend moving to the Responses API for future development. You can see the difference between the two API's here: https://platform.openai.com/docs/guides/responses-vs-chat-completions
 
-This API also allows for conversations as opposed to just a single prompt and response from the ChatAPI. You could expand the existing tool with a text box users can type questions into (e.g. "Please clarify XYZ on analysis 1") and then the model would be able to provide further details.
+This API also allows for conversations as opposed to just a single prompt and response from the Chat API. You could expand the existing tool with a text box users can type questions into (e.g. "Please clarify XYZ on analysis 1") and then the model would be able to provide further details.
 
 **ADDING NEW MODELS** 
 
