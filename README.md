@@ -42,7 +42,16 @@ Open 'SLEEC LLM Tool.py' in a python editor of your choice. Obtain your OpenAI A
 
 Run 'SLEEC LLM Tool.py' either via the command line or an IDE such as VS Code.
 
-## Modifications & Future Work
+# Modifications & Future Work
+
+## User Study
+
+A user study was carried out with this version of the tool and the following area were highlighted as key points of improvement:
+- The LLM struggles to generate code consistent with the syntax of the SLEEC language. Consider editing the SLEEC specification, adding a new Syntax secification, or adding detailed instruction surrounding the language to the prompt. This should make sure any generated suggestions are in-keepign with the SLEEC syntax.
+- The tool appears to have a preference for suggesting the removal of rules. While ok in principle, this could lead to removal of functionality in real-world use cases. Consider refining the prompt towards modifying or adding rules, saving removal of rules as a last resort. This should prioritise preserving the systems functionality over just finding the simplest method to create a well-formed ruleset.
+- Adding some highlighting to the proposed changes would make the outputs clearer to the user so they are aware of exactly what needs to change/ stay the same.
+
+## Other areas of improvement 
 
 **ADDING NEW MODELS** 
 
